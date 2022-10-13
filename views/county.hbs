@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+    <title>Country App</title>
+</head>
+
+<body>
+
+
+    {{> navbar }}
+
+    <div class="container-fluid">
+     <div class="container">
+        <div class="row">
+            {{!-- <h1 class="text-center">County Seach</h1> --}}
+           <div class="col mt-1 text-center">
+           <div class="country-box col-md-8 offset-md-2 py-5 pt-3">
+             <div class="search-bar">
+                <input type="text" name="" id="serch_input" placeholder="Search County..." onKeyUp="showCountry(this.value)">
+                <small class="text-white">Type 3 character of a country</small>
+                 <ul id="auto_City">
+                  
+            </ul>
+            </div>
+            <div class="result-box mt-5">
+                <div class="country-image">
+                    <img src="images/india.jpg" alt="" style="width: 80%; height: 250px!important">
+                </div>
+                <div class="country-caption">
+                    <h2 class="text-white">India</h2>
+                </div>
+                <div class="extra-info d-flex justify-content-between mx-5" >
+                    <span  class="text-white">Capital: <strong id="capital"></strong></span>
+                    <span  class="text-white">Population: <strong id="population"></strong></span>
+
+                </div>
+
+
+            </div>
+           </div>
+           </div>
+
+        </div>
+     </div>
+    </div>
+
+
+    {{> footer}}
+
+
+    
+    <script>
+  // searching city
+        let countryArr = [
+    'Afghanistan',
+    'Åland Islands',
+    'Albania',
+    'Algeria',
+    'American Samoa',
+    'AndorrA',
+    'Angola',
+    'Anguilla',
+    'Antarctica',
+    'Antigua and Barbuda',
+    'Argentina',
+    'Armenia',
+    'Aruba',
+    'Australia',
+    'Austria',
+    'Azerbaijan',
+    'Bahamas',
+    'Bahrain',
+    'Bangladesh',
+    'Barbados',
+    'Belarus',
+    'Belgium',
+    'Belize',
+    'Benin',
+    'Bermuda',
+    'Bhutan',
+    'Bolivia',
+    'Bosnia and Herzegovina',
+    'Botswana',
+    'Bouvet Island',
+    'Brazil',
+    'British Indian Ocean Territory',
+    'Brunei Darussalam',
+    'Bulgaria',
+    'Burkina Faso',
+    'Burundi',
+    'Cambodia',
+    'Cameroon',
+    'Canada',
+    'Cape Verde',
+    'Cayman Islands',
+    'Central African Republic',
+    'Chad',
+    'Chile',
+    'China',
+    'Christmas Island',
+    'Cocos (Keeling) Islands',
+    'Colombia',
+    'Comoros',
+    'Congo',
+    'Congo, The Democratic Republic of the',
+    'Cook Islands',
+    'Costa Rica',
+    'Cote D\'Ivoire',
+    'Croatia',
+    'Cuba',
+    'Cyprus',
+    'Czech Republic',
+    'Denmark',
+    'Djibouti',
+    'Dominica',
+    'Dominican Republic',
+    'Ecuador',
+    'Egypt',
+    'El Salvador',
+    'Equatorial Guinea',
+    'Eritrea',
+    'Estonia',
+    'Ethiopia',
+    'Falkland Islands (Malvinas)',
+    'Faroe Islands',
+    'Fiji',
+    'Finland',
+    'France',
+    'French Guiana',
+    'French Polynesia',
+    'French Southern Territories',
+    'Gabon',
+    'Gambia',
+    'Georgia',
+    'Germany',
+    'Ghana',
+    'Gibraltar',
+    'Greece',
+    'Greenland',
+    'Grenada',
+    'Guadeloupe',
+    'Guam',
+    'Guatemala',
+    'Guernsey',
+    'Guinea',
+    'Guinea-Bissau',
+    'Guyana',
+    'Haiti',
+    'Heard Island and Mcdonald Islands',
+    'Holy See (Vatican City State)',
+    'Honduras',
+    'Hong Kong',
+    'Hungary',
+    'Iceland',
+    'India',
+    'Indonesia',
+    'Iran, Islamic Republic Of',
+    'Iraq',
+    'Ireland',
+    'Isle of Man',
+    'Israel',
+    'Italy',
+    'Jamaica',
+    'Japan',
+    'Jersey',
+    'Jordan',
+    'Kazakhstan',
+    'Kenya',
+    'Kiribati',
+    'Korea, Democratic People\'S Republic of',
+    'Korea, Republic of',
+    'Kuwait',
+    'Kyrgyzstan',
+    'Lao People\'S Democratic Republic',
+    'Latvia',
+    'Lebanon',
+    'Lesotho',
+    'Liberia',
+    'Libyan Arab Jamahiriya',
+    'Liechtenstein',
+    'Lithuania',
+    'Luxembourg',
+    'Macao',
+    'Macedonia, The Former Yugoslav Republic of',
+    'Madagascar',
+    'Malawi',
+    'Malaysia',
+    'Maldives',
+    'Mali',
+    'Malta',
+    'Marshall Islands',
+    'Martinique',
+    'Mauritania',
+    'Mauritius',
+    'Mayotte',
+    'Mexico',
+    'Micronesia, Federated States of',
+    'Moldova, Republic of',
+    'Monaco',
+    'Mongolia',
+    'Montserrat',
+    'Morocco',
+    'Mozambique',
+    'Myanmar',
+    'Namibia',
+    'Nauru',
+    'Nepal',
+    'Netherlands',
+    'Netherlands Antilles',
+    'New Caledonia',
+    'New Zealand',
+    'Nicaragua',
+    'Niger',
+    'Nigeria',
+    'Niue',
+    'Norfolk Island',
+    'Northern Mariana Islands',
+    'Norway',
+    'Oman',
+    'Pakistan',
+    'Palau',
+    'Palestinian Territory, Occupied',
+    'Panama',
+    'Papua New Guinea',
+    'Paraguay',
+    'Peru',
+    'Philippines',
+    'Pitcairn',
+    'Poland',
+    'Portugal',
+    'Puerto Rico',
+    'Qatar',
+    'Reunion',
+    'Romania',
+    'Russian Federation',
+    'RWANDA',
+    'Saint Helena',
+    'Saint Kitts and Nevis',
+    'Saint Lucia',
+    'Saint Pierre and Miquelon',
+    'Saint Vincent and the Grenadines',
+    'Samoa',
+    'San Marino',
+    'Sao Tome and Principe',
+    'Saudi Arabia',
+    'Senegal',
+    'Serbia and Montenegro',
+    'Seychelles',
+    'Sierra Leone',
+    'Singapore',
+    'Slovakia',
+    'Slovenia',
+    'Solomon Islands',
+    'Somalia',
+    'South Africa',
+    'South Georgia and the South Sandwich Islands',
+    'Spain',
+    'Sri Lanka',
+    'Sudan',
+    'Suriname',
+    'Svalbard and Jan Mayen',
+    'Swaziland',
+    'Sweden',
+    'Switzerland',
+    'Syrian Arab Republic',
+    'Taiwan, Province of China',
+    'Tajikistan',
+    'Tanzania, United Republic of',
+    'Thailand',
+    'Timor-Leste',
+    'Togo',
+    'Tokelau',
+    'Tonga',
+    'Trinidad and Tobago',
+    'Tunisia',
+    'Turkey',
+    'Turkmenistan',
+    'Turks and Caicos Islands',
+    'Tuvalu',
+    'Uganda',
+    'Ukraine',
+    'United Arab Emirates',
+    'United Kingdom',
+    'United States',
+    'United States Minor Outlying Islands',
+    'Uruguay',
+    'Uzbekistan',
+    'Vanuatu',
+    'Venezuela',
+    'Viet Nam',
+    'Virgin Islands, British',
+    'Virgin Islands, U.S.',
+    'Wallis and Futuna',
+    'Western Sahara',
+    'Yemen',
+    'Zambia',
+    'Zimbabwe'
+]
+        let res;
+        let city_serch;
+
+        function autocompleteMatch(input) {
+            if (input == '') {
+                return [];
+            }
+            if(input.length < 3) {
+                return []; 
+            }
+            var reg = new RegExp(input.toLowerCase())
+            return countryArr.filter(function(term) {
+
+                let terms = term.toLowerCase();
+                
+                   if (terms.match(reg)) {
+                    return terms;
+              
+                }
+               
+            });
+        }
+
+        function showCountry(val) {
+            res = document.getElementById("auto_City");
+            res.innerHTML = '';
+            let list = '';
+            let terms = autocompleteMatch(val);
+            for (i = 0; i < terms.length; i++) {
+                list += '<li>' + terms[i] + '</li>';
+            }
+            res.innerHTML = list;
+
+            const searchLI = document.querySelectorAll("#auto_City li");
+
+            searchLI.forEach((data) => {
+
+                data.addEventListener("click", function() {
+
+                    city_serch = document.getElementById("serch_input");
+
+                    city_serch.value = this.innerHTML;
+
+                    res.innerHTML = '';
+
+                    let serachTerms = city_serch.value;
+                    
+                    const countryImage = document.querySelector(".country-image img");
+                    const countryName = document.querySelector(".country-caption h2");
+                    const capital = document.querySelector("#capital");
+                    const population = document.querySelector("#population");
+                     
+                    fetch("/oneCountry",{
+                    method:"POST",
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({serachTerms})
+                    }).then(res => res.text()).then(data =>{
+            
+
+                    let countryInfo = JSON.parse(data);       
+                      
+                      
+                      countryImage.src = countryInfo.countryInfo[1];
+                      countryName.innerHTML = countryInfo.countryInfo[0];
+                      capital.innerHTML = countryInfo.countryInfo[2];
+                      population.innerHTML = countryInfo.countryInfo[3]
+
+                     
+                   
+                  
+                  
+                    })
+
+
+
+                });
+
+            })
+
+        }
+
+        
+    </script>
+
+
+
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>

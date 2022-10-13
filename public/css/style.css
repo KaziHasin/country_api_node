@@ -1,0 +1,252 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;1,200;1,500;1,600&display=swap');
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto Mono', monospace;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.navbar {
+    background-color: rgb(37, 35, 35);
+    color: #fff;
+}
+
+.navbar-nav li a {
+    color: #Fff;
+}
+
+.navbar-nav {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.carousel-item img {
+    height: 280px!important;
+}
+
+figure-caption {
+    top: 73%;
+    left: 49%;
+    transform: translate(-50%, -50%);
+}
+
+figure-caption a {
+    text-decoration: none;
+    padding: .4rem .9rem;
+    background-color: transparent;
+    color: #fff;
+    border-radius: 20px;
+    text-transform: uppercase;
+}
+
+.carousel-caption {
+    position: absolute;
+    top: -10px;
+}
+
+.caption {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #000;
+    text-shadow: 2px 2px 4px rgb(41, 39, 39);
+}
+
+.country-box {
+    background-color: #1e3799;
+    border-radius: 5px;
+}
+
+.country-box .search-bar input {
+    padding: .5rem .8rem;
+    width: 80%;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    outline: none;
+    position: relative;
+}
+
+.search-bar small {
+    position: absolute;
+    bottom: -20px;
+    left: 80px;
+}
+
+.extra-info span {
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.error-text {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.search-bar {
+    position: relative;
+}
+
+.search-bar #auto_City {
+    width: 80%;
+    background-color: #fff;
+    border-radius: 5px 5px 0 0;
+    border-top: none;
+    outline: none;
+    color: #34495e;
+    font-size: 16px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.search-bar #auto_City li {
+    list-style-type: none;
+    font-size: 20px;
+    padding: 5px 0;
+    cursor: pointer;
+    text-align: left;
+}
+
+.aboutcard {
+    margin: 100px auto 0;
+    width: 330px;
+    height: 380px;
+    background-color: #fff;
+    box-shadow: 20px 0 34px rgba(0, 0, 0, .16);
+    border-radius: 10px;
+    position: relative;
+    transition: .5s;
+}
+
+.aboutcard:hover {
+    height: 400px;
+    margin-top: 60px;
+}
+
+.aboutcard .about-image {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -50px;
+    width: 140px;
+    height: 130px;
+    background-color: #fff;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, .30);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: .5s;
+}
+
+.aboutcard:hover .about-image {
+    width: 180px;
+    height: 160px;
+}
+
+.aboutcard .about-image img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.about-social {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%);
+    font-size: 1.30em;
+    font-weight: 600;
+    color: #555;
+    transition: .5s;
+}
+
+.aboutcard:hover .about-social {
+    top: 30%;
+}
+
+.about-me {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.about-me .box {
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+.about-me .box h2 {
+    font-size: 1.29em;
+    font-weight: 600;
+    color: #555;
+    line-height: 1.25em;
+}
+
+.about-me .box h2 span {
+    font-size: .85em;
+    color: #ccc;
+    font-weight: 500;
+}
+
+.about-desc {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+
+.about-desc .box {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+}
+
+.about-desc .box h3 {
+    font-size: 1.1em;
+    font-weight: 600;
+    text-align: center;
+    color: #555;
+}
+
+.about-desc .box h3 span {
+    font-size: .82em;
+    font-weight: 500;
+    opacity: .8;
+}
+
+.btn-grp {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.btn-grp button {
+    padding: 8px 15px;
+    border: none;
+    outline: none;
+    background-color: #AAC4FF;
+    font-size: 1.2em;
+    font-weight: 400;
+    border-radius: 5px;
+}
+
+.btn-grp button:nth-child(2) {
+    background-color: #fff;
+    color: #999;
+    border: 1px solid #999;
+}
+
+footer {
+    background-color: rgb(37, 35, 35);
+    margin-top: auto;
+    ;
+}
