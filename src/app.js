@@ -6,7 +6,7 @@ const fetch = require("node-fetch");
 // const { response } = require("express");
 const fs = require("fs");
 const { response } = require("express");
-const port = 3002;
+const port = process.env.PORT || 3002
 
 let getPath = path.join(__dirname, "../public");
 let partialPath = path.join(__dirname, "../views/handlebars");
