@@ -250,3 +250,11 @@ footer {
     margin-top: auto;
     ;
 }
+
+@media(max-width: 600px) {
+    .search-bar small {
+        position: absolute;
+        bottom: -20px;
+        left: 39px;
+    }
+}
